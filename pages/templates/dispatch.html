@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="canonical" href="">
+    <title>Transport ERP - Logistics Management System</title>
+    <meta name="keywords" content="transport management software, logistics software, Cargo Software, Logistics Tracking Software, transportation software program, truck tracking software, freight forwarding software, dispatch software for trucking companies, transportation software solutions, freight shipping software, transport billing software, accounting software for transport company, online transport software, erp software for transport company.">
+    <meta name="description" content="Transport ERP is the Best Logistics & Transport Management Software in India developed to manage the day-to-day operations of transport and cargo operations.">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/jquery.singlePageNav.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/typed.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Enquiryt.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+    <SCRIPT Language="JavaScript">
+
+        function FormValidator(c) {
+            var f = "";
+            var b = true;
+
+            if (document.getElementById("name").value == "") {
+                f += "* Please Enter Name\n"
+            }
+            if (document.getElementById("company").value == "") {
+                f += "* Please Enter Company Name\n"
+            }
+            if (document.getElementById("emailid").value == "") {
+                f += "* Please Enter Email Address\n"
+            }
+            if (document.getElementById("phone").value == "") {
+                f += "* Please Enter Phone No\n"
+            }
+            if (document.getElementById("message").value == "") {
+                f += "* Please Enter Message\n"
+            }
+           
+            if (f.length == 0) {
+                if (grecaptcha.getResponse() == "") {
+                    // alert("You can't proceed!");
+                    f = "You can't proceed!";
+                    document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+                    return false;
+                } else {
+                    // alert("Thank you");
+                }
+            }
+            if (f.length > 0) {
+                b = false
+            }
+            if (b) {
+                var e;
+                e = validateEmail();
+                if (e.length > 0) {
+                    return false
+                }
+                var a;
+                a = ToCellValidate();
+                if (a.length > 0) {
+                    return false
+                }
+                var d;
+                d = checkAnswer();
+                if (d.length > 0) {
+                    return false
+                }
+            } else {
+                alert(f);
+                return false
+            }
+        }
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PT2XHWD');
+    </script>
+    <!-- End Google Tag Manager -->
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(29, 56, 73, 0.9), rgba(29, 56, 73, 0.9)), 
+                        url('images/hero-bg.jpg') center/cover;
+            padding: 150px 0;
+            color: white;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: #1d3849;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .client-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .stats-section {
+            background: #1d3849;
+            color: white;
+            padding: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: #074168;
+            font-weight: bold;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .demo-txt {
+                margin-top: -10px;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .demo-txt {
+                margin-top: 90px;
+            }
+        }
+
+        /* Enhanced UI Styles */
+        .dispatch-card {
+            background: #1d3849;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            color: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .card-header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+        }
+
+        .section-title i {
+            font-size: 24px;
+        }
+
+        .origin-badge, .feature-badge, .count-badge, .premium-badge {
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-left: auto;
+        }
+
+        .origin-badge {
+            background: #28a745;
+        }
+
+        .feature-badge {
+            background: #17a2b8;
+        }
+
+        .count-badge {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .premium-badge {
+            background: #dc3545;
+        }
+
+        .form-control {
+            height: 45px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .action-btn {
+            height: 45px;
+            border-radius: 8px;
+            border: none;
+            padding: 0 20px;
+            font-weight: 500;
+            transition: all 0.3s;
+            background: #074168;
+            color: white;
+            width: 100%;
+            margin-top: 22px;
+        }
+
+        .action-btn.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .action-btn.glow {
+            box-shadow: 0 0 10px #074168;
+        }
+
+        .action-btn.highlight {
+            background: #28a745;
+        }
+
+        .action-btn.optimize-btn {
+            background: #dc3545;
+            margin-top: 20px;
+        }
+
+        .route-details-box, .result-box {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            color: #000;
+        }
+
+        .comparison-box {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+            color: #000;
+        }
+
+        .comparison-box.optimized {
+            border: 2px solid #28a745;
+        }
+
+        .loads-container {
+            margin-top: 20px;
+        }
+
+        .load-item {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            color: #000;
+            transition: transform 0.3s;
+        }
+
+        .load-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .contact-btn {
+            display: inline-block;
+            width: auto;
+            margin: 5px;
+            padding: 8px 15px;
+            font-size: 14px;
+            height: auto;
+        }
+
+        .contact-btn i {
+            margin-right: 5px;
+        }
+
+        .load-item .row {
+            align-items: center;
+        }
+
+        .load-item h4 {
+            color: #074168;
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .load-item p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .fa-spinner {
+            color: #074168;
+        }
+    </style>
+</head>
+
+<body id="top">
+    {{chatbot | safe}}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PT2XHWD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- start preloader -->
+    <!--div class="preloader">
+			<div class="sk-spinner sk-spinner-wave">
+     	 		<div class="sk-rect1"></div>
+       			<div class="sk-rect2"></div>
+       			<div class="sk-rect3"></div>
+      	 		<div class="sk-rect4"></div>
+      			<div class="sk-rect5"></div>
+     		</div>
+    	</div -->
+    <!-- end preloader -->
+
+    <!-- start header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+
+                </div>
+                <div class="col-md-8 col-sm-4 col-xs-12 text-right" style="background: #1d3849;border-radius: 0px 0px 0px 70px;">
+                    <p class="phone number" style="float:left;"><i class="fa fa-phone"></i> &nbsp; +91 - 00000 00000 &nbsp; </p>
+
+                    <p class="phone number1"><i class="fa fa-envelope-o"></i> &nbsp; <a href="mailto:info@example.com">info@example.com</a></p>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+
+    <!-- start navigation -->
+    <nav class="navbar navbar-default templatemo-nav" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">
+                    <img src="{{ url_for('static', filename='images/logo2.jpg') }}" alt="Logo" style="height: 100px;">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li><a href="{{ url_for('customer') }}">CUSTOMER</a></li>
+                    <li><a href="{{ url_for('location') }}">LOCATION</a></li>
+                    <li><a href="{{ url_for('opportunities') }}">OPPORTUNITIES</a></li>
+                    <li><a href="{{ url_for('dispatch') }}">DISPATCH</a></li>
+                    <li><a href="{{ url_for('tracking') }}">TRACKING</a></li>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end navigation -->
+
+    <section id="dispatch" style="padding-top: 120px;">
+        <div class="container">
+            <!-- Quick Routing Section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="dispatch-card wow fadeIn" data-wow-delay="0.4s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-route"></i> Quick Routing
+                                <span class="origin-badge">Indore Hub</span>
+                            </h3>
+                        </div>
+                        <div class="route-content">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label><i class="fa fa-map-marker origin-icon"></i> Origin</label>
+                                        <input type="text" class="form-control" value="Indore" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label><i class="fa fa-map-marker-alt dest-icon"></i> Destination</label>
+                                        <select id="destination" class="form-control custom-select">
+                                            <option value="">Select Destination</option>
+                                            <option value="Mumbai">Mumbai</option>
+                                            <option value="Delhi">Delhi</option>
+                                            <option value="Bangalore">Bangalore</option>
+                                            <option value="Pune">Pune</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="action-btn pulse" onclick="calculateRoute()">
+                                        <i class="fa fa-calculator"></i> Calculate
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="routeDetails" class="route-details-box"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drive Calculator Section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="dispatch-card wow fadeIn" data-wow-delay="0.5s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-clock"></i> Drive Time Calculator
+                                <span class="feature-badge">New</span>
+                            </h3>
+                        </div>
+                        <div class="calculator-content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label><i class="fa fa-road"></i> Select Route</label>
+                                        <select id="predefinedRoute" class="form-control custom-select" onchange="updateDistance()">
+                                            <option value="">Choose Route</option>
+                                            <option value="800">Indore - Mumbai (800 km)</option>
+                                            <option value="590">Indore - Delhi (590 km)</option>
+                                            <option value="1200">Indore - Bangalore (1200 km)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label><i class="fa fa-users"></i> Drive Type</label>
+                                        <select id="driveType" class="form-control custom-select">
+                                            <option value="solo">Solo Drive</option>
+                                            <option value="team">Team Drive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="action-btn glow" onclick="calculateDriveTime()">
+                                        Calculate Time
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="timeResult" class="result-box"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Available Loads Section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="dispatch-card wow fadeIn" data-wow-delay="0.6s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-truck"></i> Available Loads
+                                <span class="count-badge">12 Active</span>
+                            </h3>
+                        </div>
+                        <button class="action-btn highlight" onclick="findNextLoad()">
+                            <i class="fa fa-search"></i> Find My Next Load
+                        </button>
+                        <div id="loadResults" class="loads-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load Optimization Section -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="dispatch-card wow fadeIn" data-wow-delay="0.7s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-chart-line"></i> Load Optimization
+                                <span class="premium-badge">Premium</span>
+                            </h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="comparison-box current">
+                                    <h4>Current Route</h4>
+                                    <div id="currentRoute"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="comparison-box optimized">
+                                    <h4>Optimized Suggestion</h4>
+                                    <div id="optimizedRoute"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="action-btn optimize-btn" onclick="optimizeLoads()">
+                            <i class="fa fa-magic"></i> Optimize Routes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact section from index.html -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTACT <span>US</span></h2>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+                    <form action="#" method="post">
+                        <label>NAME</label>
+                        <input name="fullname" type="text" class="form-control" id="fullname">
+                        <label>EMAIL</label>
+                        <input name="email" type="email" class="form-control" id="email">
+                        <label>MESSAGE</label>
+                        <textarea name="message" rows="4" class="form-control" id="message"></textarea>
+                        <input type="submit" class="form-control">
+                    </form>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+                    <address>
+                        <p class="address-title">OUR ADDRESS</p>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</span>
+                        <p><i class="fa fa-phone"></i> +91 9876543210</p>
+                        <p><i class="fa fa-envelope-o"></i> info@transporterp.in</p>
+                        <p><i class="fa fa-map-marker"></i> 123 New Street View, New Location, 12345</p>
+                    </address>
+                    <ul class="social-icon">
+                        <li><h4>WE ARE SOCIAL</h4></li>
+                        <li><a href="#" class="fa fa-facebook"></a></li>
+                        <li><a href="#" class="fa fa-twitter"></a></li>
+                        <li><a href="#" class="fa fa-instagram"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer from index.html -->
+    <footer id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+                        Copyright &copy; 2024 Transport ERP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    
+
+    <script>
+        // Calculate route
+        function calculateRoute() {
+            const destination = document.getElementById('destination').value;
+            
+            if (!destination) {
+                alert('Please select a destination city');
+                return;
+            }
+
+            // Fixed routes from Indore
+            const routes = {
+                'Mumbai': {
+                    distance: 800,
+                    rate: 45,
+                    time: '16 hours'
+                },
+                'Delhi': {
+                    distance: 590,
+                    rate: 42,
+                    time: '12 hours'
+                },
+                'Bangalore': {
+                    distance: 1200,
+                    rate: 48,
+                    time: '24 hours'
+                },
+                'Pune': {
+                    distance: 680,
+                    rate: 44,
+                    time: '14 hours'
+                }
+            };
+
+            const route = routes[destination];
+            const totalValue = route.distance * route.rate;
+
+            document.getElementById('routeDetails').innerHTML = `
+                <div class="row">
+                    <div class="col-md-3">
+                        <p><strong>Distance:</strong> ${route.distance} km</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><strong>Rate:</strong> ₹${route.rate}/km</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><strong>Est. Time:</strong> ${route.time}</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><strong>Total Value:</strong> ₹${totalValue}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Calculate drive time
+        function calculateDriveTime() {
+            const routeSelect = document.getElementById('predefinedRoute');
+            const distance = parseInt(routeSelect.value);
+            const driveType = document.getElementById('driveType').value;
+
+            if (!distance) {
+                alert('Please select a route');
+                return;
+            }
+
+            let timeInHours = driveType === 'solo' ? distance / 40 : distance / 45;
+            let maxDailyHours = driveType === 'solo' ? 10 : 20;
+            let requiredBreaks = driveType === 'solo' ? 
+                Math.floor(timeInHours / 4) : Math.floor(timeInHours / 8);
+
+            const totalDays = Math.ceil(timeInHours / maxDailyHours);
+            const totalHours = timeInHours + (requiredBreaks * 0.5);
+
+            document.getElementById('timeResult').innerHTML = `
+                <div class="row">
+                    <div class="col-md-4">
+                        <p><strong>Total Drive Time:</strong> ${Math.round(totalHours * 10) / 10} hours</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Estimated Days:</strong> ${totalDays}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Required Breaks:</strong> ${requiredBreaks}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Find next load
+        function findNextLoad() {
+            const loadResults = document.getElementById('loadResults');
+            loadResults.innerHTML = '<div class="text-center"><i class="fa fa-spinner fa-spin fa-2x"></i></div>';
+
+            setTimeout(() => {
+                const loads = [
+                    {
+                        origin: 'Indore',
+                        destination: 'Mumbai',
+                        distance: 800,
+                        rate: 45,
+                        type: 'Full Load',
+                        weight: '18 Tons',
+                        broker: {
+                            phone: '+919876543210',
+                            email: 'broker1@transporterp.in'
+                        }
+                    },
+                    {
+                        origin: 'Indore',
+                        destination: 'Delhi',
+                        distance: 590,
+                        rate: 42,
+                        type: 'Partial Load',
+                        weight: '12 Tons',
+                        broker: {
+                            phone: '+919876543211',
+                            email: 'broker2@transporterp.in'
+                        }
+                    }
+                ];
+
+                let html = '';
+                loads.forEach(load => {
+                    html += `
+                        <div class="load-item">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h4>${load.origin} to ${load.destination}</h4>
+                                </div>
+                                <div class="col-md-2">
+                                    <p><strong>Distance:</strong> ${load.distance} km</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p><strong>Rate:</strong> ₹${load.rate}/km</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p><strong>Type:</strong> ${load.type}</p>
+                                    <p><strong>Weight:</strong> ${load.weight}</p>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <a href="tel:${load.broker.phone}" class="action-btn contact-btn">
+                                        <i class="fa fa-phone"></i> Call
+                                    </a>
+                                    <a href="mailto:${load.broker.email}" class="action-btn contact-btn">
+                                        <i class="fa fa-envelope"></i> Email
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                loadResults.innerHTML = html;
+            }, 1000);
+        }
+
+        // Optimize loads
+        function optimizeLoads() {
+            document.getElementById('currentRoute').innerHTML = `
+                <p><strong>Route:</strong> Indore → Mumbai → Delhi</p>
+                <p><strong>Total Distance:</strong> 1390 km</p>
+                <p><strong>Total Time:</strong> 32 hours</p>
+                <p><strong>Total Revenue:</strong> ₹60,780</p>
+            `;
+            
+            document.getElementById('optimizedRoute').innerHTML = `
+                <p><strong>Route:</strong> Indore → Delhi → Mumbai</p>
+                <p><strong>Total Distance:</strong> 1290 km</p>
+                <p><strong>Total Time:</strong> 28 hours</p>
+                <p><strong>Total Revenue:</strong> ₹65,890</p>
+                <p class="text-success"><strong>Savings:</strong> 100 km, 4 hours</p>
+            `;
+        }
+
+        // Initialize animations
+        new WOW().init();
+    </script>
+</body>
+</html> 

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Settings | Transport ERP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+    <style>
+
+        .settings-card {
+            background: #1d3849;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .settings-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .settings-content {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            height: 45px;
+            border-radius: 8px;
+        }
+
+        .custom-switch {
+            padding-left: 2.25rem;
+        }
+
+        .settings-group {
+            margin-bottom: 30px;
+        }
+
+        .settings-group h4 {
+            color: #074168;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .action-btn {
+            background: #074168;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .action-btn:hover {
+            background: #0a5c94;
+        }
+
+        .color-preview {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        .color-preview.active {
+            border: 2px solid #074168;
+        }
+
+        .range-value {
+            display: inline-block;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+
+        .settings-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .return-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #074168;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(7, 65, 104, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .return-btn:hover {
+            background: #0a5c94;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(7, 65, 104, 0.3);
+        }
+
+        .return-btn i {
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .return-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {{chatbot | safe}}
+    <!-- Include header and navigation -->
+
+    <section id="settings" style="padding-top: 120px;">
+        <div class="container">
+            <!-- Return Button -->
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <a href="{{ url_for('home') }}" class="return-btn wow fadeIn" data-wow-delay="0.2s">
+                        <i class="fa fa-arrow-left"></i>
+                        Return to Dashboard
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Notification Preferences -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="settings-card wow fadeIn" data-wow-delay="0.4s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-bell"></i> Notification Preferences
+                            </h3>
+                        </div>
+                        <div class="settings-content">
+                            <div class="settings-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="emailNotif" checked>
+                                                <label class="custom-control-label" for="emailNotif">Email Notifications</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="smsNotif">
+                                                <label class="custom-control-label" for="smsNotif">SMS Alerts</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="loadAlerts" checked>
+                                                <label class="custom-control-label" for="loadAlerts">New Load Alerts</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Alert Frequency</label>
+                                            <select class="form-control" id="alertFrequency">
+                                                <option value="instant">Instant</option>
+                                                <option value="hourly">Hourly Digest</option>
+                                                <option value="daily">Daily Summary</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Input Customization -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="settings-card wow fadeIn" data-wow-delay="0.5s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-sliders"></i> Data Input Preferences
+                            </h3>
+                        </div>
+                        <div class="settings-content">
+                            <div class="settings-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Minimum Rate per Mile</label>
+                                            <input type="range" class="custom-range" id="minRate" min="20" max="100" value="40">
+                                            <span class="range-value">₹40/km</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Maximum Load Weight</label>
+                                            <input type="range" class="custom-range" id="maxWeight" min="5" max="40" value="25">
+                                            <span class="range-value">25 Tons</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Default Search Radius</label>
+                                            <select class="form-control" id="searchRadius">
+                                                <option value="50">50 km</option>
+                                                <option value="100">100 km</option>
+                                                <option value="200">200 km</option>
+                                                <option value="500">500 km</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Preferred Load Types</label>
+                                            <select class="form-control" id="loadTypes" multiple>
+                                                <option value="full">Full Load</option>
+                                                <option value="partial">Partial Load</option>
+                                                <option value="express">Express Delivery</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layout Preferences -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="settings-card wow fadeIn" data-wow-delay="0.6s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-paint-brush"></i> Layout Preferences
+                            </h3>
+                        </div>
+                        <div class="settings-content">
+                            <div class="settings-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Theme Color</label>
+                                            <div>
+                                                <span class="color-preview active" style="background: #074168;" data-theme="default" onclick="changeTheme('default')"></span>
+                                                <span class="color-preview" style="background: #28a745;" data-theme="green" onclick="changeTheme('green')"></span>
+                                                <span class="color-preview" style="background: #dc3545;" data-theme="red" onclick="changeTheme('red')"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Font Size</label>
+                                            <select class="form-control" id="fontSize">
+                                                <option value="small">Small</option>
+                                                <option value="medium" selected>Medium</option>
+                                                <option value="large">Large</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Dashboard Layout</label>
+                                            <select class="form-control" id="dashboardLayout">
+                                                <option value="compact">Compact</option>
+                                                <option value="comfortable" selected>Comfortable</option>
+                                                <option value="spacious">Spacious</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="darkMode">
+                                                <label class="custom-control-label" for="darkMode">Dark Mode</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="row mb-5">
+                <div class="col-md-12 text-center">
+                    <button class="action-btn" onclick="saveSettings()">
+                        <i class="fa fa-save"></i> Save Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include contact section and footer -->
+
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script>
+
+        // Initialize range input displays
+        document.getElementById('minRate').addEventListener('input', function() {
+            this.nextElementSibling.textContent = `₹${this.value}/km`;
+        });
+
+        document.getElementById('maxWeight').addEventListener('input', function() {
+            this.nextElementSibling.textContent = `${this.value} Tons`;
+        });
+
+        // Theme change function
+        function changeTheme(theme) {
+            document.querySelectorAll('.color-preview').forEach(preview => {
+                preview.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            // Add theme change logic here
+        }
+
+        // Enhanced settings functionality
+        const userSettings = {
+            // Load saved settings or use defaults
+            load() {
+                const saved = localStorage.getItem('userSettings');
+                return saved ? JSON.parse(saved) : this.getDefaults();
+            },
+
+            // Save settings
+            save(settings) {
+                localStorage.setItem('userSettings', JSON.stringify(settings));
+                this.applySettings(settings);
+            },
+
+            // Get default settings
+            getDefaults() {
+                return {
+                    notifications: {
+                        email: true,
+                        sms: false,
+                        loadAlerts: true,
+                        frequency: 'instant'
+                    },
+                    dataPreferences: {
+                        minRate: 40,
+                        maxWeight: 25,
+                        searchRadius: 100,
+                        loadTypes: ['full', 'partial']
+                    },
+                    layout: {
+                        theme: 'default',
+                        fontSize: 'medium',
+                        dashboardLayout: 'comfortable',
+                        darkMode: false
+                    }
+                };
+            },
+
+            // Apply settings to UI
+            applySettings(settings) {
+                // Apply theme
+                document.documentElement.style.setProperty('--primary-color', this.getThemeColor(settings.layout.theme));
+                
+                // Apply font size
+                document.body.style.fontSize = this.getFontSize(settings.layout.fontSize);
+                
+                // Apply dark mode
+                if (settings.layout.darkMode) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+
+                // Apply layout spacing
+                document.body.className = `layout-${settings.layout.dashboardLayout}`;
+
+                // Save to localStorage
+                localStorage.setItem('userSettings', JSON.stringify(settings));
+
+                // Show success notification
+                this.showNotification('Settings saved successfully!');
+            },
+
+            // Get theme color
+            getThemeColor(theme) {
+                const themes = {
+                    default: '#074168',
+                    green: '#28a745',
+                    red: '#dc3545'
+                };
+                return themes[theme] || themes.default;
+            },
+
+            // Get font size
+            getFontSize(size) {
+                const sizes = {
+                    small: '14px',
+                    medium: '16px',
+                    large: '18px'
+                };
+                return sizes[size] || sizes.medium;
+            },
+
+            // Show notification
+            showNotification(message) {
+                const notification = document.createElement('div');
+                notification.className = 'settings-notification';
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+        };
+
+        // Initialize settings
+        document.addEventListener('DOMContentLoaded', () => {
+            const settings = userSettings.load();
+            userSettings.applySettings(settings);
+
+            // Add event listeners for real-time updates
+            document.querySelectorAll('input, select').forEach(input => {
+                input.addEventListener('change', () => {
+                    const newSettings = {
+                        notifications: {
+                            email: document.getElementById('emailNotif').checked,
+                            sms: document.getElementById('smsNotif').checked,
+                            loadAlerts: document.getElementById('loadAlerts').checked,
+                            frequency: document.getElementById('alertFrequency').value
+                        },
+                        dataPreferences: {
+                            minRate: document.getElementById('minRate').value,
+                            maxWeight: document.getElementById('maxWeight').value,
+                            searchRadius: document.getElementById('searchRadius').value,
+                            loadTypes: Array.from(document.getElementById('loadTypes').selectedOptions).map(opt => opt.value)
+                        },
+                        layout: {
+                            theme: document.querySelector('.color-preview.active').getAttribute('data-theme'),
+                            fontSize: document.getElementById('fontSize').value,
+                            dashboardLayout: document.getElementById('dashboardLayout').value,
+                            darkMode: document.getElementById('darkMode').checked
+                        }
+                    };
+                    userSettings.save(newSettings);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

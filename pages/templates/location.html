@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- {{ url_for('static', filename='CSS/style.css') }} -->
+<head>
+    <meta charset="utf-8">
+    <title>Location Management | Transport ERP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../static/images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/animate.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../static/css/templatemo-style.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+    <!-- Add location-specific styles -->
+    <style>
+        .map-container {
+            height: 400px;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .location-card {
+            background: #fff;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .location-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: #1d3849;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            margin: 0;
+            color: #fff;
+        }
+
+        .location-filters {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+    </style>
+    <!-- for wheather -->
+    <style>
+        .weather-detail-div{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        /* .weather-detail-div div{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        } */
+        .weather-detail-div div li{
+            list-style: none;
+        }
+        .weather-detail-div div h3{
+           text-align: center;
+        }
+    </style>
+    <!-- <style>
+        .weather-detail-div {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            background-color: #f4f4f9;
+        }
+    
+        .weather-detail-div div {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .weather-detail-div div ul {
+            padding-left: 0;
+            width: 100%;
+            list-style: none;
+        }
+    
+        .weather-detail-div div li {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #333;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+    
+        .weather-detail-div div h3 {
+            text-align: center;
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+    
+        /* Hover effect for list items */
+        .weather-detail-div div li:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        /* Add a little gradient to the background */
+        body {
+            background: linear-gradient(to right, #2980b9, #6dd5fa);
+            font-family: 'Arial', sans-serif;
+        }
+    </style> -->
+    
+
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.singlePageNav.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    <!-- Google Maps API -->
+
+    <script src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d219580.32126336457!2d75.69869359159027!3d22.723887937153236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcad1b410ddb%3A0x96ec4da356240f4!2sIndore%2C%20Madhya%20Pradesh!5e1!3m2!1sen!2sin!4v1738739928273!5m2!1sen!2sin"></script>
+    
+    <!-- Add Socket.IO for real-time updates -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+
+<body id="top">
+    {{chatbot | safe}}
+    <!-- Header Section -->
+   <!-- start header -->
+   <header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+
+            </div>
+            <div class="col-md-8 col-sm-4 col-xs-12 text-right" style="background: #1d3849;border-radius: 0px 0px 0px 70px;">
+                <p class="phone number" style="float:left;"><i class="fa fa-phone"></i> &nbsp; +91 - 00000 00000 &nbsp; </p>
+
+                <p class="phone number1"><i class="fa fa-envelope-o"></i> &nbsp; <a href="mailto:info@example.com">info@example.com</a></p>
+            </div>
+
+        </div>
+    </div>
+</header>
+<!-- end header -->
+
+<!-- start navigation -->
+<nav class="navbar navbar-default templatemo-nav" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand">
+                <img src="{{ url_for('static', filename='images/logo2.jpg') }}" alt="Logo" style="height: 100px;">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url_for('home') }}">HOME</a></li>
+                <li><a href="{{ url_for('customer') }}">CUSTOMER</a></li>
+                <li><a href="{{ url_for('location') }}">LOCATION</a></li>
+                <li><a href="{{ url_for('opportunities') }}">OPPORTUNITIES</a></li>
+                <li><a href="{{ url_for('dispatch') }}">DISPATCH</a></li>
+                <li><a href="{{ url_for('tracking') }}">TRACKING</a></li>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- end navigation -->
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Location Statistics -->
+        <div class="location-stats">
+            <div class="stat-card">
+                <h3>Active Vehicles</h3>
+                <h2 id="activeVehicles">0</h2>
+            </div>
+            <div class="stat-card">
+                <h3>Total Routes</h3>
+                <h2 id="totalRoutes">0</h2>
+            </div>
+            <div class="stat-card">
+                <h3>Delivery Points</h3>
+                <h2 id="deliveryPoints">0</h2>
+            </div>
+        </div>
+
+        <!-- Location Filters -->
+        <div class="section three-d-box location-filters">
+            <h2 class="section-heading">Location Filters</h2>
+            <form id="filterForm" class="row">
+                <div class="col-md-3">
+                    <div class="form-group three-d-input">
+                        <label>Vehicle Type</label>
+                        <select class="form-control" id="vehicleType">
+                            <option value="">All Vehicles</option>
+                            <option value="Truck">Trucks</option>
+                            <option value="Van">Vans</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group three-d-input">
+                        <label>Status</label>
+                        <select class="form-control" id="status">
+                            <option value="">All Status</option>
+                            <option value="In Transit">In Transit</option>
+                            <option value="Loading">Loading</option>
+                            <option value="Unloading">Unloading</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn-custom three-d-button">Apply Filters</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Map Section -->
+        <!-- Map Section -->
+        <div class="section three-d-box">
+            <h2 class="section-heading">Live Location Tracking</h2>
+            <!-- <div id="map" class="map-container"></div> -->
+            <div class="map-container">
+                <iframe 
+                    width="100%" 
+                    height="400" 
+                    style="border:0; border-radius: 8px;" 
+                    loading="lazy" 
+                    allowfullscreen 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d76154.39609794854!2d75.82699958662073!3d22.721203153332656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcad1b410ddb%3A0x96ec4da356240f4!2sIndore%2C%20Madhya%20Pradesh!5e1!3m2!1sen!2sin!4v1738741597962!5m2!1sen!2sin">
+                </iframe>
+            </div>
+            
+        </div>
+
+        <!-- Location List -->
+        <div class="section three-d-box">
+            <h2 class="section-heading">Weather</h2>
+            <!-- <div id="vehicleList"></div> -->
+            <form id="WeatherForm" class="row" action="/search" method="POST">
+                <div class="col-md-3">
+                    <div class="form-group three-d-input">
+                        <label>City Name</label>
+                        <input type="text" name="city_name" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <button type="submit" class="btn-custom three-d-button">Search</button>
+                </div>
+            </form>
+            <div class="weather-detail-div">
+                <div>
+                    <h3>Weather Forecast</h3>
+                    <ul>
+                        <li>City Name: {{cityname}}</li>
+                        <li>Country: {{country}}</li>
+                        <li>Main: {{main}}</li>
+                        <li>Icon: {{icon}}</li>
+                        <li>Temperature: {{temp}}°C</li>
+                        <li>Min Temperature: {{temp_min}}°C</li>
+                        <li>Max Temperature: {{temp_max}}°C</li>
+                        <li>Preasure: {{pressure}} hPa</li>
+                        <li>Humidity: {{humidity}}%</li>
+                        <li>Wind Speed: {{speed}} km/h</li>
+                        <li>Rain: {{rain}} mm</li>
+                        <li>Condition: {{description}}</li>
+                        <li>Clouds: {{clouds}}%</li>
+                        <li>Sunrise: {{sunrise}}</li>
+                        <li>Sunset: {{sunset}}</li>
+                        <li>Visibility: {{visibility}} km</li>
+                        <li>Wind Degree: {{deg}}°</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- <div class="weather-detail-div">
+                <div>
+                    <h3>city detail</h3>
+                    <li>City Name :{{cityname}}</li>
+                    <li>county code :{{country}}</li>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+                        Copyright &copy; 2024 Transport ERP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let map;
+        let markers = {};
+        let socket;
+        
+        async function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 20.5937, lng: 78.9629 },
+                zoom: 5,
+                styles: [
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels",
+                        "stylers": [{ "visibility": "off" }]
+                    }
+                ]
+            });
+            
+            // Initialize Socket.IO connection
+            socket = io('http://localhost:5000', {
+                transports: ['websocket'],
+                cors: {
+                    origin: "http://localhost:5000"
+                }
+            });
+            
+            socket.on('connect', () => {
+                console.log('Connected to server');
+            });
+            
+            socket.on('vehicle_update', (vehicle) => {
+                updateVehicleMarker(vehicle);
+            });
+            
+            await loadVehicles();
+            await loadRoutes();
+        }
+
+        async function loadRoutes() {
+            try {
+                const response = await fetch('http://localhost:5000/api/routes');
+                const routes = await response.json();
+                
+                Object.values(routes).forEach(route => {
+                    const path = new google.maps.Polyline({
+                        path: route.waypoints,
+                        geodesic: true,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2
+                    });
+                    path.setMap(map);
+                });
+            } catch (error) {
+                console.error('Error loading routes:', error);
+            }
+        }
+
+        function updateVehicleMarker(vehicle) {
+            if (markers[vehicle.id]) {
+                markers[vehicle.id].setPosition(vehicle.location);
+            } else {
+                createVehicleMarker(vehicle);
+            }
+            
+            // Update vehicle list if it matches current filters
+            updateVehicleInList(vehicle);
+        }
+
+        function createVehicleMarker(vehicle) {
+            const marker = new google.maps.Marker({
+                position: vehicle.location,
+                map: map,
+                title: `${vehicle.id} - ${vehicle.status}`,
+                icon: {
+                    url: `images/${vehicle.type.toLowerCase()}-icon.png`,
+                    scaledSize: new google.maps.Size(32, 32)
+                }
+            });
+            
+            marker.addListener('error', () => {
+                marker.setIcon(null); // Use default marker if icon loading fails
+            });
+            
+            markers[vehicle.id] = marker;
+            
+            const infoWindow = new google.maps.InfoWindow({
+                content: getInfoWindowContent(vehicle)
+            });
+            
+            marker.addListener('click', () => {
+                infoWindow.open(map, marker);
+            });
+        }
+
+        function getInfoWindowContent(vehicle) {
+            return `
+                <div class="info-window">
+                    <h4>${vehicle.id}</h4>
+                    <p><strong>Driver:</strong> ${vehicle.driver}</p>
+                    <p><strong>Status:</strong> ${vehicle.status}</p>
+                    <p><strong>Speed:</strong> ${vehicle.speed} km/h</p>
+                    <p><strong>Destination:</strong> ${vehicle.destination}</p>
+                    <p><strong>Last Update:</strong> ${new Date(vehicle.lastUpdate).toLocaleTimeString()}</p>
+                </div>
+            `;
+        }
+
+        async function loadVehicles() {
+            try {
+                const response = await fetch('http://localhost:5000/api/vehicles');
+                const vehicles = await response.json();
+                
+                updateStats(vehicles);
+                updateVehicleList(vehicles);
+                updateMapMarkers(vehicles);
+                
+            } catch (error) {
+                console.error('Error loading vehicles:', error);
+            }
+        }
+
+        function updateStats(vehicles) {
+            document.getElementById('activeVehicles').textContent = vehicles.length;
+            const routes = new Set(vehicles.map(v => v.route));
+            document.getElementById('totalRoutes').textContent = routes.size;
+            document.getElementById('deliveryPoints').textContent = vehicles.length * 2; // Source + Destination
+        }
+
+        function updateVehicleList(vehicles) {
+            const vehicleType = document.getElementById('vehicleType').value;
+            const status = document.getElementById('status').value;
+            
+            const filteredVehicles = vehicles.filter(v => 
+                (!vehicleType || v.type === vehicleType) &&
+                (!status || v.status === status)
+            );
+
+            const list = document.getElementById('vehicleList');
+            list.innerHTML = '';
+            
+            filteredVehicles.forEach(vehicle => {
+                const card = document.createElement('div');
+                card.className = 'location-card';
+                card.innerHTML = `
+                    <div class="row">
+                        <div class="col-md-3">
+                            <strong>Vehicle ID:</strong> ${vehicle.id}
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Status:</strong> <span class="text-success">${vehicle.status}</span>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Destination:</strong> ${vehicle.destination}
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn-custom three-d-button" onclick="centerOnVehicle('${vehicle.id}')">
+                                Track Details
+                            </button>
+                        </div>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        function updateMapMarkers(vehicles) {
+            // Remove old markers
+            Object.values(markers).forEach(marker => marker.setMap(null));
+            markers = {};
+            
+            // Add new markers
+            vehicles.forEach(vehicle => {
+                const marker = new google.maps.Marker({
+                    position: vehicle.location,
+                    map: map,
+                    title: `${vehicle.id} - ${vehicle.status}`,
+                    icon: {
+                        url: `images/${vehicle.type.toLowerCase()}-icon.png`,
+                        scaledSize: new google.maps.Size(32, 32)
+                    }
+                });
+                
+                markers[vehicle.id] = marker;
+                
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `
+                        <div>
+                            <h4>${vehicle.id}</h4>
+                            <p>Status: ${vehicle.status}</p>
+                            <p>Destination: ${vehicle.destination}</p>
+                        </div>
+                    `
+                });
+                
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+
+        function centerOnVehicle(vehicleId) {
+            const marker = markers[vehicleId];
+            if (marker) {
+                map.setCenter(marker.getPosition());
+                map.setZoom(12);
+            }
+        }
+
+        document.getElementById('filterForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await loadVehicles();
+        });
+
+        // Initialize map when page loads
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+</body>
+
+</html> 

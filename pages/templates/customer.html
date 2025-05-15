@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="canonical" href="">
+    <title>Logistics Management Solution | Logistics Management Software | Tracking and Tracing Solution | ROAD/ SURFACE TRANSPORTATION MANAGEMENT | Cargo Software | TMS | Best Transport Management Software</title>
+    <meta name="keywords" content="transport management software, logistics software, Cargo Software, Logistics Tracking Software, transportation software program, truck tracking software, freight forwarding software, dispatch software for trucking companies, transportation software solutions, freight shipping software, transport billing software, accounting software for transport company, online transport software, erp software for transport company.">
+    <meta name="description" content="Transport ERP is the Best Logistics & Transport Management Software in India developed to manage the day-to-day operations of transport and cargo operations.">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/icon.png')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/templatemo-style.css')}}">
+    <script src="{{url_for('static', filename='js/jquery.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+    <script src="{{url_for('static', filename='js/jquery.singlePageNav.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/typed.js')}}"></script>
+    <script src="{{url_for('static', filename='js/wow.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/custom.js')}}"></script>
+    <script src="{{url_for('static', filename='js/Enquiryt.js')}}"></script>
+
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+
+    <SCRIPT Language="JavaScript">
+        function FormValidator(c) {
+            var f = "";
+            var b = true;
+
+            if (document.getElementById("name").value == "") {
+                f += "* Please Enter Name\n"
+            }
+            if (document.getElementById("company").value == "") {
+                f += "* Please Enter Company Name\n"
+            }
+            if (document.getElementById("emailid").value == "") {
+                f += "* Please Enter Email Address\n"
+            }
+            if (document.getElementById("phone").value == "") {
+                f += "* Please Enter Phone No\n"
+            }
+            if (document.getElementById("message").value == "") {
+                f += "* Please Enter Message\n"
+            }
+            // if(document.getElementById("txtAns").value==""){f+="* Please Enter Security Answer\n"}
+            if (f.length == 0) {
+                if (grecaptcha.getResponse() == "") {
+                    // alert("You can't proceed!");
+                    f = "You can't proceed!";
+                    document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+                    return false;
+                } else {
+                    // alert("Thank you");
+                }
+            }
+            if (f.length > 0) {
+                b = false
+            }
+            if (b) {
+                var e;
+                e = validateEmail();
+                if (e.length > 0) {
+                    return false
+                }
+                var a;
+                a = ToCellValidate();
+                if (a.length > 0) {
+                    return false
+                }
+                var d;
+                d = checkAnswer();
+                if (d.length > 0) {
+                    return false
+                }
+            } else {
+                alert(f);
+                return false
+            }
+        }
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PT2XHWD');
+    </script>
+    <!-- End Google Tag Manager -->
+    <style>
+        h1 span {
+            color: #074168;
+            font-weight: bold;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .demo-txt {
+                margin-top: -10px;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .demo-txt {
+                margin-top: 90px;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+    {{chatbot | safe}}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PT2XHWD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- start preloader -->
+    <!--div class="preloader">
+			<div class="sk-spinner sk-spinner-wave">
+     	 		<div class="sk-rect1"></div>
+       			<div class="sk-rect2"></div>
+       			<div class="sk-rect3"></div>
+      	 		<div class="sk-rect4"></div>
+      			<div class="sk-rect5"></div>
+     		</div>
+    	</div -->
+    <!-- end preloader -->
+
+    <!-- start header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+
+                </div>
+                <div class="col-md-8 col-sm-4 col-xs-12 text-right" style="background: #1d3849;border-radius: 0px 0px 0px 70px;">
+                    <p class="phone number" style="float:left;"><i class="fa fa-phone"></i> &nbsp; +91 - 00000 00000 &nbsp; </p>
+
+                    <p class="phone number1"><i class="fa fa-envelope-o"></i> &nbsp; <a href="mailto:info@example.com">info@example.com</a></p>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+
+    <!-- start navigation -->
+    <nav class="navbar navbar-default templatemo-nav" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">
+                    <img src="{{ url_for('static', filename='images/logo2.jpg') }}" alt="Logo" style="height: 100px;">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li><a href="{{ url_for('customer') }}">CUSTOMER</a></li>
+                    <li><a href="{{ url_for('location') }}">LOCATION</a></li>
+                    <li><a href="{{ url_for('opportunities') }}">OPPORTUNITIES</a></li>
+                    <li><a href="{{ url_for('dispatch') }}">DISPATCH</a></li>
+                    <li><a href="{{ url_for('tracking') }}">TRACKING</a></li>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end navigation -->
+
+    <div class="container">
+        <div class="section three-d-box">
+            <h2 class="section-heading">Customer Profile Management</h2>
+            <form>
+                <div class="form-group three-d-input">
+                    <label>Name</label>
+                    <input type="text" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group three-d-input">
+                    <label>Contact</label>
+                    <input type="text" class="form-control" placeholder="Enter contact details" required>
+                </div>
+                <div class="form-group three-d-input">
+                    <label>Preferences</label>
+                    <input type="text" class="form-control" placeholder="Enter preferences" required>
+                </div>
+                <div class="form-group three-d-input">
+                    <label>Email</label>
+                    <input type="email" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <button type="submit" class="btn-custom three-d-button">Save Profile</button>
+            </form>
+        </div>
+    
+
+
+        <div class="container">
+            <div class="section three-d-box">
+                <h2 class="section-heading">Saved Search Criteria</h2>
+                <form>
+                    <div class="form-group three-d-input">
+                        <label>Trailer Length</label>
+                        <input type="text" class="form-control" placeholder="Enter your trailer length" required>
+                    </div>
+                    <div class="form-group three-d-input">
+                        <label>Weight Capacity</label>
+                        <input type="number" class="form-control" placeholder="Enter number in TONNES " required>
+                    </div>
+                    <div class="form-group three-d-input">
+                        <label>Payment Preferences</label>
+                        <input type="text" class="form-control" placeholder="Enter preferences" required>
+                    </div>
+                    <div class="form-group three-d-input">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="Enter your name" required>
+                    </div>
+                    <button type="submit" class="btn-custom three-d-button">Save Profile</button>
+                </form>
+            </div>
+            
+        <div class="section three-d-box">
+            <h2 class="section-heading">Contact Options</h2>
+            <button class="btn-custom three-d-button">Click to Call</button>
+            <button class="btn-custom three-d-button">Click to Email</button>
+        </div>
+        
+        <div class="section three-d-box">
+            <h2 class="section-heading">Credit Search on Brokers</h2>
+            <input type="text" class="form-control three-d-input" placeholder="Enter broker name">
+            <button class="btn-custom three-d-button" style="margin-top:10px;">Search</button>
+        </div>
+    </div>
+    
+    <!-- Footer from index.html -->
+    <footer id="copyright" class="three-d-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+                        Copyright &copy; 2025 Transport ERP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+  
+    <!-- start contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s" style="padding-bottom:0px;">CONTACT US</h2>
+                </div>
+                <div class="col-md-7 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+                    <h3>Request A Call Back</h3>
+                    <form action=thankyou.asp method=post name=form1 onSubmit="return FormValidator(this)">
+                        <div class=contactsec>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="hdnsubject" type="hidden" name="hdnsubject" value="CargoERP Enquiry" />
+                                <div class=form-group>
+                                    <input id=name type=text name=name placeholder=Name class=form-control onkeypress="return blockSpecilchar(event)" />
+                                </div>
+                                <div class=form-group>
+                                    <input id=company type=text name=company placeholder="Company Name" class=form-control />
+                                </div>
+                                <div class=form-group>
+                                    <input id=emailid type=text name=mailfrom placeholder="Email ID" class=form-control />
+                                </div>
+                                <div class=form-group>
+                                    <input id=phone type=text placeholder=Phone name=phone class=form-control />
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class=form-group>
+                                    <textarea id=message name=message placeholder=Message class=form-control rows=7></textarea>
+                                </div>
+                                <div class=form-group>
+
+                                    <div class="g-recaptcha" data-sitekey="6LfdUOkUAAAAAOqR4c6ajDqu-ZT0pgW8rwrb1in8" required data-callback="verifyCaptcha"></div>
+                                    <div id="g-recaptcha-error"></div>
+                                </div>
+                                <div class=form-group>
+                                    <input type=submit name=button style="width:100%; letter-spacing:1px;font-size:18px" value=Submit class="btn btn-warning col-md-7" />
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group" style="display:none;">
+                                <table width=350 border=0 cellspacing=0 cellpadding=0>
+                                    <tr>
+                                        <td width=100 align=center valign=top style=padding-top:5px>
+                                            <label for=txtAns id=lblRadom class=smalllabel>
+                                    </label>
+                                            <label class=smalllabel>
+                                    +</label> <label for=txtAns id=lblRadom1 class=smalllabel></label> <label class=smalllabel style=padding-right:10px> ? </label>
+                                        </td>
+                                        <td align=left valign=top>
+                                            <input id=txtAns type=text name=txtAns class=form-control />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <label class=smalllabel>
+                           </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+                    <h3>Get In Touch With Us</h3>
+                    <address>						
+    						<span>We are proud to announce, 100+ happy clients satisfied by our logistics and operation solution's.</span>
+    						<p><i class="fa fa-phone"></i> +91 93478 24725.</p>
+    						<p><i class="fa fa-envelope-o"></i> contact@hjsoftware.net</p>
+    						<p><i class="fa fa-map-marker"></i> Unit#1024, 9th Floor, Vasavi's MPM Grand, Yellareddyguda, Ameerpet, Hyderabad, Telangana, 500073</p></address>
+                    <p class="wow bounceIn col-md-6" data-wow-offset="50" data-wow-delay="0.3s"><a style="color:#fff;" href="about.html">About Us</a></p>
+                    <p class="wow bounceIn col-md-6" data-wow-offset="50" data-wow-delay="0.3s"><a style="color:#fff;" href="privacy-policy.html">Privacy Policy</a></p>
+                    <p class="wow bounceIn col-md-6" data-wow-offset="50" data-wow-delay="0.3s"><a style="color:#fff;" href="terms-conditions.html">Terms & Conditions</a></p>
+                    <p class="wow bounceIn col-md-6" data-wow-offset="50" data-wow-delay="0.3s"><a style="color:#fff;" href="disclaimer-policy.html">Disclaimer policy</a></p>
+                    <p class="wow bounceIn col-md-12" data-wow-offset="50" data-wow-delay="0.3s"><a style="color:#fff;" href="cancellation-policy.html">Cancellation and Refund Policy</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end contact -->
+
+    <!-- start copyright -->
+    <footer id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+                        Copyright &copy; 2024 Transport ERP</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- end copyright -->
+    <div class="feedback smooth-menu"><a href="#contact"><span class="btn btn-warning">Contact Us</span></a></div>
+    <!-- whatsapp code -->
+    <div id="wacht">
+        <a href="https://web.whatsapp.com/send?phone=+919347824725&text=" class="web-whatsapp" onclick="gtag('event', 'WhatsApp', {'event_action': 'whatsapp_chat', 'event_category': 'Chat', 'event_label': 'Chat_WhatsApp'});" target="_blank"><img src="images/whatsapp.png" width="30px"></a>
+        <a href="https://api.whatsapp.com/send?phone=+919347824725&text=" class="api-whatsapp" target="_blank"><img src="images/whatsapp.png" width="30px"></a></a>
+    </div>
+    <!-- call code -->
+    <a href="tel:919347824725">
+        <div class="coccoc-alo-phone coccoc-alo-green coccoc-alo-show" id="coccoc-alo-phoneIcon callnowicon" style="left:20px !important; bottom:20px !important;">
+            <div class="coccoc-alo-ph-circle"></div>
+            <div class="coccoc-alo-ph-circle-fill"></div>
+            <div class="coccoc-alo-ph-img-circle"></div>
+        </div>
+    </a>
+</body>
+
+</html>

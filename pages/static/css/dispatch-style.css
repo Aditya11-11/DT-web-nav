@@ -1,0 +1,358 @@
+/* Dispatch-specific styles that complement existing templatemo-style.css */
+.dispatch-section {
+    background: #f2f2f2;
+    padding: 80px 0;
+}
+
+.dispatch-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+.dispatch-card:hover {
+    transform: translateY(-5px);
+}
+
+.dispatch-card h3 {
+    color: #074168;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f2f2f2;
+}
+
+.dispatch-card h3 i {
+    margin-right: 10px;
+}
+
+.map-container {
+    height: 400px;
+    width: 100%;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid #e0e0e0;
+}
+
+.blue-button {
+    background: #074168;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    margin: 10px 0;
+}
+
+.blue-button:hover {
+    background: #0a5c94;
+}
+
+.load-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    background: #fff;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.load-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.stat-box {
+    background: #1d3849;
+    padding: 25px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+}
+
+.stat-box i {
+    color: #ffffff;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.stat-box h3 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.stat-box span {
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    height: 45px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #074168;
+    box-shadow: 0 0 5px rgba(7,65,104,0.2);
+}
+
+.contact-btn {
+    background: #28a745;
+    color: #ffffff;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background: #218838;
+}
+
+/* Currency symbol style */
+.rupee {
+    font-family: Arial, sans-serif;
+}
+
+/* Loads Section (matching opportunities.html style) */
+.loads-section {
+    background: #ffffff;
+}
+
+.loads-container {
+    margin-top: 20px;
+}
+
+.load-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.load-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+.load-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.route-info {
+    font-size: 18px;
+    color: #074168;
+    font-weight: 600;
+}
+
+.price-info {
+    color: #28a745;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Optimization Section */
+.optimization-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    height: 100%;
+}
+
+.optimization-card h4 {
+    color: #074168;
+    margin-bottom: 15px;
+}
+
+/* Animations */
+.wow {
+    visibility: hidden;
+}
+
+/* Quick Routing Styles */
+.routing-intro {
+    background: #074168;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.feature-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.feature-header i {
+    font-size: 48px;
+    color: #ffffff;
+}
+
+.feature-header h3 {
+    font-size: 24px;
+    margin: 0;
+    color: #ffffff;
+}
+
+.feature-header p {
+    font-size: 16px;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.route-planner {
+    padding: 20px;
+}
+
+.route-planner .form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #074168;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.route-planner .form-group label i {
+    color: #074168;
+}
+
+.map-container {
+    height: 400px;
+    width: 100%;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 2px solid #e0e0e0;
+}
+
+.route-actions {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.action-button {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.calculate-btn {
+    background: #074168;
+    color: #ffffff;
+}
+
+.calculate-btn:hover {
+    background: #0a5c94;
+}
+
+.truckerpath-btn {
+    background: #28a745;
+    color: #ffffff;
+}
+
+.truckerpath-btn:hover {
+    background: #218838;
+}
+
+.info-panel {
+    height: 100%;
+}
+
+.info-panel h4 {
+    color: #074168;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f2f2f2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.route-info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-item {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.info-item label {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.info-item div {
+    color: #074168;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .dispatch-card {
+        padding: 15px;
+    }
+    
+    .map-container {
+        height: 300px;
+    }
+    
+    .stat-box {
+        margin-bottom: 15px;
+    }
+    
+    .route-actions {
+        flex-direction: column;
+    }
+    
+    .map-container {
+        height: 300px;
+    }
+} 

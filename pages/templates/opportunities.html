@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Opportunities | Transport ERP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+
+    <!-- Opportunities-specific styles -->
+    <style>
+        .opportunities-card {
+            background: #fff;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .opportunities-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .load-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: #1d3849;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            margin: 0;
+            color: #fff;
+        }
+
+        .load-filters {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .rate-indicator {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .rate-high {
+            color: #28a745;
+        }
+
+        .rate-medium {
+            color: #ffc107;
+        }
+
+        .rate-low {
+            color: #dc3545;
+        }
+
+        .bid-button {
+            background: #1d3849;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .bid-button:hover {
+            background: #2a4f66;
+        }
+
+        .share-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+
+        #customizeModal .modal-content {
+            border-radius: 8px;
+        }
+
+        .load-type-badge {
+            background: #e9ecef;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body id="top">
+    {{chatbot | safe}}
+    <!-- start header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+
+                </div>
+                <div class="col-md-8 col-sm-4 col-xs-12 text-right" style="background: #1d3849;border-radius: 0px 0px 0px 70px;">
+                    <p class="phone number" style="float:left;"><i class="fa fa-phone"></i> &nbsp; +91 - 00000 00000 &nbsp; </p>
+
+                    <p class="phone number1"><i class="fa fa-envelope-o"></i> &nbsp; <a href="mailto:info@example.com">info@example.com</a></p>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+
+    <!-- start navigation -->
+    <nav class="navbar navbar-default templatemo-nav" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">
+                    <img src="{{ url_for('static', filename='images/logo2.jpg') }}" alt="Logo" style="height: 100px;">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li><a href="{{ url_for('customer') }}">CUSTOMER</a></li>
+                    <li><a href="{{ url_for('location') }}">LOCATION</a></li>
+                    <li><a href="{{ url_for('opportunities') }}">OPPORTUNITIES</a></li>
+                    <li><a href="{{ url_for('dispatch') }}">DISPATCH</a></li>
+                    <li><a href="{{ url_for('tracking') }}">TRACKING</a></li>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end navigation -->
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Load Statistics -->
+        <div class="load-stats">
+            <div class="stat-card">
+                <h3>Available Loads</h3>
+                <h2 id="availableLoads">247</h2>
+            </div>
+            <div class="stat-card">
+                <h3>Average Rate/Km</h3>
+                <h2 id="avgRate">₹45</h2>
+            </div>
+            <div class="stat-card">
+                <h3>Active Bids</h3>
+                <h2 id="activeBids">12</h2>
+            </div>
+            <div class="stat-card">
+                <h3>Success Rate</h3>
+                <h2 id="successRate">85%</h2>
+            </div>
+        </div>
+
+        <!-- Load Filters -->
+        <div class="section three-d-box load-filters">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 class="section-heading">Load Search</h2>
+                </div>
+                <div class="col-md-3 text-right">
+                    <button class="btn-custom three-d-button" data-toggle="modal" data-target="#customizeModal">
+                        <i class="fa fa-cog"></i> Customize
+                    </button>
+                </div>
+            </div>
+            <form id="loadSearchForm" class="row">
+                <div class="col-md-3">
+                    <div class="form-group three-d-input">
+                        <label>Origin</label>
+                        <input type="text" class="form-control" id="origin" placeholder="Enter origin city">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group three-d-input">
+                        <label>Destination</label>
+                        <input type="text" class="form-control" id="destination" placeholder="Enter destination city">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group three-d-input">
+                        <label>Load Type</label>
+                        <select class="form-control" id="loadType">
+                            <option value="">All Types</option>
+                            <option value="flatbed">Flatbed</option>
+                            <option value="reefer">Reefer</option>
+                            <option value="dryvan">Dry Van</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group three-d-input">
+                        <label>Min Rate/Km</label>
+                        <input type="number" class="form-control" id="minRate" placeholder="₹">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn-custom three-d-button" style="margin-top: 25px;">
+                        <i class="fa fa-search"></i> Search
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Load Results -->
+        <div class="section three-d-box">
+            <h2 class="section-heading">Top Recommended Loads</h2>
+            <div id="loadResults">
+                <!-- Load cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Customize Modal -->
+    <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Customize Interface</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="customizeForm">
+                        <div class="form-group">
+                            <label>Notification Preferences</label>
+                            <div class="checkbox">
+                                <label><input type="checkbox" checked> New Load Alerts</label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" checked> Bid Updates</label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" checked> Rate Changes</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Default Search Radius (miles)</label>
+                            <input type="number" class="form-control" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Load Types</label>
+                            <select class="form-control" multiple>
+                                <option selected>Flatbed</option>
+                                <option selected>Reefer</option>
+                                <option selected>Dry Van</option>
+                                <option>Power Only</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-custom three-d-button" data-dismiss="modal">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+                        Copyright &copy; 2024 Transport ERP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.singlePageNav.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
+
+    <script>
+        // Sample data for demonstration
+        const sampleLoads = [
+            {
+                id: "L1001",
+                origin: "Indore, MP",
+                destination: "Mumbai, MH",
+                type: "Dry Van",
+                weight: "15,000 kgs",
+                rate: 45,
+                distance: 580,
+                pickup: "2024-03-15",
+                delivery: "2024-03-17"
+            },
+            {
+                id: "L1002",
+                origin: "Indore, MP",
+                destination: "Delhi, DL",
+                type: "Reefer",
+                weight: "12,000 kgs",
+                rate: 52,
+                distance: 780,
+                pickup: "2024-03-16",
+                delivery: "2024-03-18"
+            },
+            {
+                id: "L1003",
+                origin: "Indore, MP",
+                destination: "Ahmedabad, GJ",
+                type: "Flatbed",
+                weight: "18,000 kgs",
+                rate: 42,
+                distance: 380,
+                pickup: "2024-03-15",
+                delivery: "2024-03-16"
+            }
+        ];
+
+        function displayLoads(loads) {
+            const container = document.getElementById('loadResults');
+            container.innerHTML = '';
+
+            loads.forEach(load => {
+                const card = document.createElement('div');
+                card.className = 'opportunities-card';
+                card.innerHTML = `
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h4>${load.origin} → ${load.destination}</h4>
+                            <span class="load-type-badge">${load.type}</span>
+                        </div>
+                        <div class="col-md-3">
+                            <p><strong>Distance:</strong> ${load.distance} km</p>
+                            <p><strong>Weight:</strong> ${load.weight}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><strong>Rate/Km:</strong> 
+                                <span class="rate-indicator rate-high">₹${load.rate}/km</span>
+                            </p>
+                            <p><strong>Total:</strong> ₹${(load.rate * load.distance).toLocaleString('en-IN')}</p>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button class="bid-button" onclick="placeBid('${load.id}')">
+                                <i class="fa fa-gavel"></i> Place Bid
+                            </button>
+                            <button class="share-button" onclick="shareLoad('${load.id}')">
+                                <i class="fa fa-share-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function placeBid(loadId) {
+            // Implement bid functionality
+            alert(`Placing bid for load ${loadId}`);
+        }
+
+        function shareLoad(loadId) {
+            // Implement share functionality
+            alert(`Sharing load ${loadId}`);
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayLoads(sampleLoads);
+
+            // Form submission handler
+            document.getElementById('loadSearchForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Implement search functionality
+                displayLoads(sampleLoads);
+            });
+        });
+    </script>
+</body>
+
+</html> 

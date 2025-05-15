@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+</head>
+
+<body>
+    <h1>Text to Speech</h1>
+    <form action="/" method="post">
+        <label for="text">Enter Text:</label><br>
+        <textarea id="text" name="text" rows="4" cols="50"></textarea><br>
+        <label for="accent">Select Accent:</label>
+        <select id="accent" name="accent">
+            <option value="default">Default</option>
+            <option value="indian">Indian Accent</option>
+            <!-- Add more accents as needed -->
+        </select><br><br>
+        <input type="submit" value="Generate Speech">
+    </form>
+
+    <!-- Display generated audio files -->
+    {% for filename in audio_files %}
+    <audio controls>
+        <source src="{{ url_for('serve_audio', filename=filename) }}" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br><br>
+    {% endfor %}
+</body>
+
+</html>

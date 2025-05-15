@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+requests
+torch
+asyncio
+langchain-groq
+transformers
+edge-tts
+vosk
+python-magic

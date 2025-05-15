@@ -1,0 +1,807 @@
+<<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="canonical" href="">
+    <title>Transport ERP - Logistics Management System</title>
+    <meta name="keywords" content="transport management software, logistics software, Cargo Software, Logistics Tracking Software, transportation software program, truck tracking software, freight forwarding software, dispatch software for trucking companies, transportation software solutions, freight shipping software, transport billing software, accounting software for transport company, online transport software, erp software for transport company.">
+    <meta name="description" content="Transport ERP is the Best Logistics & Transport Management Software in India developed to manage the day-to-day operations of transport and cargo operations.">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/jquery.singlePageNav.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/typed.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Enquiryt.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+    <SCRIPT Language="JavaScript">
+
+        function FormValidator(c) {
+            var f = "";
+            var b = true;
+
+            if (document.getElementById("name").value == "") {
+                f += "* Please Enter Name\n"
+            }
+            if (document.getElementById("company").value == "") {
+                f += "* Please Enter Company Name\n"
+            }
+            if (document.getElementById("emailid").value == "") {
+                f += "* Please Enter Email Address\n"
+            }
+            if (document.getElementById("phone").value == "") {
+                f += "* Please Enter Phone No\n"
+            }
+            if (document.getElementById("message").value == "") {
+                f += "* Please Enter Message\n"
+            }
+           
+            if (f.length == 0) {
+                if (grecaptcha.getResponse() == "") {
+                    // alert("You can't proceed!");
+                    f = "You can't proceed!";
+                    document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+                    return false;
+                } else {
+                    // alert("Thank you");
+                }
+            }
+            if (f.length > 0) {
+                b = false
+            }
+            if (b) {
+                var e;
+                e = validateEmail();
+                if (e.length > 0) {
+                    return false
+                }
+                var a;
+                a = ToCellValidate();
+                if (a.length > 0) {
+                    return false
+                }
+                var d;
+                d = checkAnswer();
+                if (d.length > 0) {
+                    return false
+                }
+            } else {
+                alert(f);
+                return false
+            }
+        }
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PT2XHWD');
+    </script>
+    <!-- End Google Tag Manager -->
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(29, 56, 73, 0.9), rgba(29, 56, 73, 0.9)), 
+                        url('images/hero-bg.jpg') center/cover;
+            padding: 150px 0;
+            color: white;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: #1d3849;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .client-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .stats-section {
+            background: #1d3849;
+            color: white;
+            padding: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: #074168;
+            font-weight: bold;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .demo-txt {
+                margin-top: -10px;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .demo-txt {
+                margin-top: 90px;
+            }
+        }
+
+        .tracking-card {
+            background: #1d3849;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .tracking-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .section-title i {
+            font-size: 28px;
+        }
+
+        .status-badge {
+            font-size: 12px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-left: auto;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .tracking-details {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            color: #000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .tracking-details h4 {
+            color: #074168;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .progress-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .timeline-point:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 5px);
+            background: #e0e0e0;
+        }
+
+        .point-marker {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #074168;
+            margin-right: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .point-completed {
+            background: #28a745;
+        }
+
+        .point-current {
+            background: #ffc107;
+            animation: pulse 2s infinite;
+        }
+
+        .weather-info {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .weather-icon {
+            font-size: 24px;
+            color: #074168;
+        }
+
+        .fuel-suggestion {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+            border-left: 4px solid #28a745;
+        }
+
+        .next-load-info {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #074168;
+        }
+
+        .action-btn {
+            background: #074168;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-btn:hover {
+            background: #0a5c94;
+            transform: translateY(-2px);
+        }
+
+        .status-active {
+            background: #28a745;
+        }
+
+        .status-delayed {
+            background: #dc3545;
+        }
+
+        .status-ontime {
+            background: #17a2b8;
+        }
+
+        .terrain-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .terrain-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #074168;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #074168;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 193, 7, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .tracking-card {
+                padding: 20px;
+            }
+
+            .tracking-details {
+                padding: 15px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+    {{chatbot | safe}}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PT2XHWD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- start preloader -->
+    <!--div class="preloader">
+			<div class="sk-spinner sk-spinner-wave">
+     	 		<div class="sk-rect1"></div>
+       			<div class="sk-rect2"></div>
+       			<div class="sk-rect3"></div>
+      	 		<div class="sk-rect4"></div>
+      			<div class="sk-rect5"></div>
+     		</div>
+    	</div -->
+    <!-- end preloader -->
+
+    <!-- start header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+
+                </div>
+                <div class="col-md-8 col-sm-4 col-xs-12 text-right" style="background: #1d3849;border-radius: 0px 0px 0px 70px;">
+                    <p class="phone number" style="float:left;"><i class="fa fa-phone"></i> &nbsp; +91 - 00000 00000 &nbsp; </p>
+
+                    <p class="phone number1"><i class="fa fa-envelope-o"></i> &nbsp; <a href="mailto:info@example.com">info@example.com</a></p>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+
+    <!-- start navigation -->
+    <nav class="navbar navbar-default templatemo-nav" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">
+                    <img src="{{ url_for('static', filename='images/logo2.jpg') }}" alt="Logo" style="height: 100px;">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url_for('home') }}">HOME</a></li>
+                    <li><a href="{{ url_for('customer') }}">CUSTOMER</a></li>
+                    <li><a href="{{ url_for('location') }}">LOCATION</a></li>
+                    <li><a href="{{ url_for('opportunities') }}">OPPORTUNITIES</a></li>
+                    <li><a href="{{ url_for('dispatch') }}">DISPATCH</a></li>
+                    <li><a href="{{ url_for('tracking') }}">TRACKING</a></li>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end navigation -->
+   <!-- Include header and navigation from dispatch.html -->
+
+    <section id="tracking" style="padding-top: 120px;">
+        <div class="container">
+            <!-- Live Load Tracking -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tracking-card wow fadeIn" data-wow-delay="0.4s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-truck"></i> Live Load Tracking
+                            </h3>
+                            <span class="status-badge status-active" id="trackingStatus">Active</span>
+                        </div>
+                        <div class="tracking-details">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Current Load Details</h4>
+                                    <p><strong>Load ID:</strong> <span id="loadId">TL-2024-001</span></p>
+                                    <p><strong>Route:</strong> <span id="route">Indore → Mumbai</span></p>
+                                    <p><strong>Driver:</strong> <span id="driver">Rajesh Kumar</span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Progress</h4>
+                                    <div class="progress-timeline" id="progressTimeline">
+                                        <!-- Timeline points will be added by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ETA & Delays -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tracking-card wow fadeIn" data-wow-delay="0.5s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-clock"></i> ETA & Conditions
+                            </h3>
+                            <span class="status-badge status-ontime" id="etaStatus">On Time</span>
+                        </div>
+                        <div class="tracking-details">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4>Time Estimates</h4>
+                                    <p><strong>ETA:</strong> <span id="eta">14:30, Today</span></p>
+                                    <p><strong>Time Remaining:</strong> <span id="timeRemaining">3h 45m</span></p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4>Traffic Conditions</h4>
+                                    <div id="trafficInfo">
+                                        <!-- Traffic info will be updated by JavaScript -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4>Weather Updates</h4>
+                                    <div id="weatherInfo">
+                                        <!-- Weather info will be updated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Route Terrain & Fuel -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tracking-card wow fadeIn" data-wow-delay="0.6s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-mountain"></i> Route Analysis
+                            </h3>
+                        </div>
+                        <div class="tracking-details">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Terrain Information</h4>
+                                    <div id="terrainInfo">
+                                        <!-- Terrain info will be updated by JavaScript -->
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Fuel Optimization</h4>
+                                    <div id="fuelSuggestions">
+                                        <!-- Fuel suggestions will be updated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deadhead & Next Load -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tracking-card wow fadeIn" data-wow-delay="0.7s">
+                        <div class="card-header">
+                            <h3 class="section-title">
+                                <i class="fa fa-forward"></i> Next Load Planning
+                            </h3>
+                        </div>
+                        <div class="tracking-details">
+                            <div id="nextLoadInfo">
+                                <!-- Next load info will be updated by JavaScript -->
+                            </div>
+                            <button class="action-btn" onclick="optimizeNextLoad()">
+                                Optimize Next Load
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTACT <span>US</span></h2>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+                    <form action="#" method="post">
+                        <label>NAME</label>
+                        <input name="fullname" type="text" class="form-control" id="fullname">
+                       
+                        <label>EMAIL</label>
+                        <input name="email" type="email" class="form-control" id="email">
+                       
+                        <label>MESSAGE</label>
+                        <textarea name="message" rows="4" class="form-control" id="message"></textarea>
+                       
+                        <input type="submit" class="form-control">
+                    </form>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+                    <address>
+                        <p class="address-title">OUR ADDRESS</p>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</span>
+                        <p><i class="fa fa-phone"></i> +91 9876543210</p>
+                        <p><i class="fa fa-envelope-o"></i> info@transporterp.in</p>
+                        <p><i class="fa fa-map-marker"></i> 123 New Street View, New Location, 12345</p>
+                    </address>
+                    <ul class="social-icon">
+                        <li><h4>WE ARE SOCIAL</h4></li>
+                        <li><a href="#" class="fa fa-facebook"></a></li>
+                        <li><a href="#" class="fa fa-twitter"></a></li>
+                        <li><a href="#" class="fa fa-instagram"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+                        Copyright &copy; 2024 Transport ERP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script>
+
+        // Initialize timeline points
+        function initializeTimeline() {
+            const timeline = document.getElementById('progressTimeline');
+            const points = [
+                { time: '08:00', status: 'Departed from Indore', completed: true },
+                { time: '10:30', status: 'Reached Dhule', completed: true },
+                { time: '12:15', status: 'Current: Near Nashik', completed: false },
+                { time: '14:30', status: 'ETA: Mumbai', completed: false }
+            ];
+
+            let html = '';
+            points.forEach(point => {
+                html += `
+                    <div class="timeline-point">
+                        <div class="point-marker ${point.completed ? 'point-completed' : ''} ${!point.completed && points.indexOf(point) === 2 ? 'point-current' : ''}"></div>
+                        <div>
+                            <strong>${point.time}</strong>
+                            <p>${point.status}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            timeline.innerHTML = html;
+        }
+
+        // Update traffic and weather info
+        function updateConditions() {
+            const trafficInfo = document.getElementById('trafficInfo');
+            const weatherInfo = document.getElementById('weatherInfo');
+
+            trafficInfo.innerHTML = `
+                <div class="weather-info">
+                    <i class="fa fa-car weather-icon"></i>
+                    <div>
+                        <p>Moderate traffic near Nashik</p>
+                        <p>+15 minutes to ETA</p>
+                    </div>
+                </div>
+            `;
+
+            weatherInfo.innerHTML = `
+                <div class="weather-info">
+                    <i class="fa fa-cloud weather-icon"></i>
+                    <div>
+                        <p>Light rain expected</p>
+                        <p>Temperature: 28°C</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Update terrain and fuel information
+        function updateTerrainInfo() {
+            const terrainInfo = document.getElementById('terrainInfo');
+            const fuelSuggestions = document.getElementById('fuelSuggestions');
+
+            terrainInfo.innerHTML = `
+                <div class="terrain-card">
+                    <div class="weather-info">
+                        <i class="fa fa-mountain terrain-icon"></i>
+                        <div>
+                            <p><strong>Current Terrain:</strong> Hilly region</p>
+                            <p><strong>Elevation:</strong> 600m above sea level</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            fuelSuggestions.innerHTML = `
+                <div class="fuel-suggestion">
+                    <h5><i class="fa fa-lightbulb"></i> AI Suggestions</h5>
+                    <p>Maintain 45-50 km/h on uphill sections</p>
+                    <p>Expected fuel consumption: 35L/100km</p>
+                    <p>Next recommended fuel stop: Nashik (80km ahead)</p>
+                </div>
+            `;
+        }
+
+        // Update next load information
+        function updateNextLoadInfo() {
+            const nextLoadInfo = document.getElementById('nextLoadInfo');
+            nextLoadInfo.innerHTML = `
+                <div class="next-load-info">
+                    <h5>Next Load Opportunity</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p><strong>From:</strong> Mumbai</p>
+                            <p><strong>To:</strong> Pune</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><strong>Available Time:</strong> 16:00</p>
+                            <p><strong>Value:</strong> ₹15,000</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><strong>Distance:</strong> 150 km</p>
+                            <p><strong>Type:</strong> Full Load</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Optimize next load
+        function optimizeNextLoad() {
+            // Simulate optimization calculation
+            alert('Optimizing next load schedule...');
+            setTimeout(() => {
+                document.getElementById('nextLoadInfo').innerHTML = `
+                    <div class="next-load-info">
+                        <h5>Optimized Schedule</h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p><strong>Current ETA:</strong> 14:30</p>
+                                <p><strong>Unloading Time:</strong> 1 hour</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Next Load Ready:</strong> 16:00</p>
+                                <p><strong>Buffer Time:</strong> 30 minutes</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Recommendation:</strong></p>
+                                <p class="text-success">Schedule Optimized ✓</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }, 1500);
+        }
+
+        // Add this new function for enhanced animations
+        function enhanceUIAnimations() {
+            // Add hover effect to action buttons
+            const buttons = document.querySelectorAll('.action-btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseover', () => {
+                    button.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseout', () => {
+                    button.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add smooth transitions for status updates
+            const statusBadges = document.querySelectorAll('.status-badge');
+            statusBadges.forEach(badge => {
+                badge.style.transition = 'all 0.3s ease';
+            });
+
+            // Add scroll reveal animation
+            const cards = document.querySelectorAll('.tracking-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 200 * index);
+            });
+        }
+
+        // Call the new function on load
+        window.onload = function() {
+            initializeTimeline();
+            updateConditions();
+            updateTerrainInfo();
+            updateNextLoadInfo();
+            enhanceUIAnimations();
+            new WOW().init();
+        };
+    </script>
+</body>
+</html> 

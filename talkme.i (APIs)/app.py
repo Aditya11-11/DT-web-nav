@@ -29,7 +29,7 @@ app.add_middleware(
 # -----------------------------------------------------------------------------
 # GLOBAL VARIABLES
 # -----------------------------------------------------------------------------
-API_KEY = "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"
+API_KEY = "API_key"
 
 # system_prompt holds two components: manual and URL (navigation commands)
 system_prompt = {
